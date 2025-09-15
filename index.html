@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Good Morning — Untuk Ica🫶🏻</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#000,#0a1220);font-family:'Shippori Antique',sans-serif;color:white}
+  .card{max-width:420px;width:100%;background:rgba(255,255,255,0.05);padding:20px;border-radius:14px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+  .photo img{width:100%;border-radius:12px;margin-bottom:12px}
+  h1{color:#ff6b81}
+  p{color:#d1d5db;font-size:14px;line-height:1.4}
+  .btn{padding:10px 14px;margin:8px 4px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+  .btn-primary{background:#ff6b81;color:#111}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.2);color:#d1d5db}
+  .floating-heart{position:fixed;font-size:22px;color:#ff6b81;animation:rise 3s linear forwards;pointer-events:none;}
+  @keyframes rise{0%{transform:translateY(0) scale(.9);opacity:1}100%{transform:translateY(-90vh) scale(1.5);opacity:0}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="photo">
+    <!-- FOTO (ganti link ini sesuai foto yang kamu suka) -->
+    <img src="https://cdn.pixabay.com/photo/2015/09/09/17/27/sunrise-931407_1280.jpg" alt="Matahari Terbit">
+  </div>
+  <h1>Selamat Pagi Ica🫶🏻 ☀️</h1>
+  <p>Semoga hari Ica penuh senyum, semangat, dan kebahagiaan. Jangan lupa sarapan ya 🤍</p>
+  
+  <button class="btn btn-primary" id="loveBtn">❤ LOVE</button>
+  <button class="btn btn-ghost" id="playBtn">▶️ Putar Musik</button>
+  
+  <p style="margin-top:12px;font-size:12px;color:#9aa4b2">Klik LOVE untuk animasi hati ❤</p>
+</div>
+
+<!-- MUSIK (ganti link mp3 sesuai selera) -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2021/09/01/audio_70c1f3eb91.mp3?filename=morning-garden-10962.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+const playBtn = document.getElementById("playBtn");
+const loveBtn = document.getElementById("loveBtn");
+
+playBtn.addEventListener("click", ()=>{
+  if(music.paused){
+    music.play();
+    playBtn.textContent = "⏸ Hentikan Musik";
+  } else {
+    music.pause();
+    playBtn.textContent = "▶️ Putar Musik";
+  }
+});
+
+function spawnHeart(){
+  const h=document.createElement("div");
+  h.className="floating-heart";
+  h.textContent="❤";
+  h.style.left=(10+Math.random()*80)+"vw";
+  h.style.bottom="-20px";
+  h.style.fontSize=(14+Math.random()*24)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),3000);
+}
+
+loveBtn.addEventListener("click", ()=> spawnHeart());
+</script>
+</body>
+</html>
